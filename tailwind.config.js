@@ -2,6 +2,11 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      'sans': ['Roboto', 'system-ui'],
+      'serif': ['apple-system', 'Gerorgia'],
+      'body': ['Open Sans'],
+    },
     colors: {
       black: {
         100: '#1F2125',
