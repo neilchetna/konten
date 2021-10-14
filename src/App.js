@@ -1,5 +1,5 @@
-import Signup from "./Components/Signup";
-import Ledger from "./Components/Ledger";
+import Signup from "./Components/Pages/SIgnup/Signup";
+import Ledger from "./Components/Pages/Dashboard/Ledger";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {

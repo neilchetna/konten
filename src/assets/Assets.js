@@ -1,14 +1,12 @@
-import React from 'react'
+import React from "react";
 
 export function TextBox(name, placeholder) {
-    return (
+  return (
     <div className="bg-black-100 text-white-100">
-        <span>
-            <label>
-            {name}
-            </label>
-        </span>
-        <input placeholder={placeholder}></input>
+      <span>
+        <label>{name}</label>
+      </span>
+      <input placeholder={placeholder}></input>
     </div>
-    )
+  );
 }
