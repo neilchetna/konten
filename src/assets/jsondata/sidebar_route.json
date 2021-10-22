@@ -1,0 +1,22 @@
+[
+  {
+    "display_name": "Ledger",
+    "route": "/ledger"
+  },
+  {
+    "display_name": "Invoice",
+    "route": "/invoice"
+  },
+  {
+    "display_name": "Costumer",
+    "route": "/costumer"
+  },
+  {
+    "display_name": "Inventory",
+    "route": "/inventory"
+  },
+  {
+    "display_name": "Settings",
+    "route": "/settings"
+  }
+]

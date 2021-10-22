@@ -1,5 +1,5 @@
 import React from "react";
-import pfp from "../assets/pfp.jpg";
+import user_image from "../assets/pfp.jpg";
 import logo from "../assets/logo.svg";
 
 export default function TopBar() {
@@ -9,7 +9,7 @@ export default function TopBar() {
       <div className="flex justify-around px-2">
         <img
           className="h-10 flex object-cover rounded-full w-10 ring ring-astra-100"
-          src={pfp}
+          src={user_image}
           alt="#"
         ></img>
         <p className="flex justify-center px-4 items-center">User Name</p>
