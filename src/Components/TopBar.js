@@ -4,7 +4,7 @@ import logo from "../assets/logo.svg";
 
 export default function TopBar() {
   return (
-    <div className="shadow-md flex z-100 justify-between items-center px-3 py-3">
+    <div className="shadow-md bg-black-100 text-white-100 flex h-15 justify-between items-center px-3 py-3">
       <img className="h-8" src={logo} alt="#"></img>
       <div className="flex justify-around px-2">
         <img

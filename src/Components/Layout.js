@@ -11,16 +11,18 @@ function Layout() {
       <Route
         render={(props) => (
           <>
-            <div className="bg-black-100 relative text-white-100 h-screen">
-              <div className="absolute inset-0 z-50">
+            <div className="bg-black-100 relative text-white-100 pt-14 h-screen">
+              <div className="absolute inset-0">
                 <TopBar />
               </div>
-              <div className="flex flex-row-reverse z-0">
-                <div className="flex justify-end z-0">
+              <div className="flex relative z-0 flex-row-reverse h-full">
+                <div className="flex justify-end h-full">
                   <Sidebar {...props} />
                 </div>
+                <div className="m-12 w-full">
+                  <Routes />
+                </div>
               </div>
-              <Routes />
             </div>
           </>
         )}

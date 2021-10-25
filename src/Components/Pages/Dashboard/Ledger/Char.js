@@ -28,7 +28,7 @@ export default function Char() {
   };
 
   return (
-    <div className="w-full flex justify-center items-center bg-black-100 z-0">
+    <div className="flex justify-center items-center bg-black-100 z-0">
       <Line data={data} options={options} />
     </div>
   );

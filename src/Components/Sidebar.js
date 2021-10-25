@@ -5,7 +5,7 @@ import sidebar_items from "../assets/jsondata/sidebar_route.json";
 
 const Sidebar = (props) => {
   return (
-    <div className="flex z-0 flex-col text-white h-screen px-7 pt-10 gap-7 items-start bg-black-200">
+    <div className="flex flex-col text-white h-full px-7 pt-10 gap-7 items-start bg-black-200">
       {sidebar_items.map((item, index) => (
         <Link to={item.route} key={index}>
           <SidebarItems title={item.display_name} />
