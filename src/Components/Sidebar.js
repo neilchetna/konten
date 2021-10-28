@@ -18,7 +18,7 @@ const Sidebar = (props) => {
 function SidebarItems({ title }) {
   return (
     <>
-      <button className="focus:text-astra-100 focus:bg-astra-100 focus:bg-opacity-10 focus:ring-1 outline-none px-7 rounded-md py-1 focus:ring-astra-100">
+      <button className="focus:text-astra-100 focus:bg-astra-100 focus:bg-opacity-10 focus:ring-1 outline-none px-7 w-full rounded-md py-1 focus:ring-astra-100">
         {title}
       </button>
     </>

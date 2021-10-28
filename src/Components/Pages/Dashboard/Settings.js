@@ -1,7 +1,7 @@
 import React from "react";
 
 function Settings() {
-  return <div></div>;
+  return <div className="static"></div>;
 }
 
 export default Settings;

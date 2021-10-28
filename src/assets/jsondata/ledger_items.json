@@ -1,11 +1,14 @@
 [
   {
-    "display_name": "Expense"
+    "display_name": "Expense",
+    "color": "text-white-100 text-5xl"
   },
   {
-    "display_name": "Income"
+    "display_name": "Income",
+    "color": "text-astra-100 text-5xl"
   },
   {
-    "display_name": "Net-profit"
+    "display_name": "Net-profit",
+    "color": "text-money-100 text-5xl"
   }
 ]
