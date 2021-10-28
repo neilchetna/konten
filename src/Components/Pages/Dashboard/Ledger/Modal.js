@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
+import { GlobalContext } from "../../../Context/GlobalState";
 
 export default function Modal({ title, showModal, setShowModal }) {
   const [input, setInput] = useState("");
+
+  const { addTransaction } = useContext(GlobalContext);
 
   function handleModal(e) {
     e.preventDefault();
@@ -11,17 +14,21 @@ export default function Modal({ title, showModal, setShowModal }) {
 
   function handleInput(e) {
     e.preventDefault();
-    setInput("");
 
-    const newTreaction = {
+    const newTransaction = {
       id: Math.floor(Math.random() * 100000000),
       amout: +input,
+      type: title,
     };
+
+    console.log(newTransaction);
+
+    addTransaction(newTransaction);
   }
 
   return (
     <>
-      {showModal ? (
+      {showModal && title !== "Net-profit" ? (
         <div
           className="fixed z-50 flex justify-center items-center h-full w-full bg-black-100
       backdrop-filter backdrop-blur-sm blur-md bg-opacity-30"

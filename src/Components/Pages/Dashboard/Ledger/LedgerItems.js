@@ -1,4 +1,5 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useContext } from "react";
+import { GlobalContext } from "../../../Context/GlobalState";
 
 import Modal from "./Modal";
 
@@ -26,6 +27,8 @@ export default function LedgerItems({ title, color }) {
 
   console.log(title);
 
+  const { transactions } = useContext(GlobalContext);
+
   return (
     <>
       <button
@@ -33,7 +36,7 @@ export default function LedgerItems({ title, color }) {
         onClick={handleModal}
       >
         <p className="inset-0">{title}</p>
-        <p className={color}>$40000</p>
+        <p className={color}></p>
       </button>
       <Modal showModal={showModal} setShowModal={setShowModal} title={title} />
     </>
