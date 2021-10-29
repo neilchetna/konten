@@ -17,13 +17,13 @@ export default function Modal({ title, showModal, setShowModal }) {
 
     const newTransaction = {
       id: Math.floor(Math.random() * 100000000),
-      amout: +input,
+      amount: +input,
       type: title,
     };
 
-    console.log(newTransaction);
-
     addTransaction(newTransaction);
+    setInput("");
+    setShowModal((prev) => !prev);
   }
 
   return (
@@ -42,20 +42,21 @@ export default function Modal({ title, showModal, setShowModal }) {
             </button>
             <label>Add your {title}</label>
             <input
-              className="pl-2 rounded-md h-9 bg-black-100 focus:ring-2 outline-none foucs:ring-astra-100"
+              className="pl-2 rounded h-9 bg-black-100 focus:ring-2 outline-none foucs:ring-astra-100"
               placeholder="Insert Amount"
               type="number"
+              autoFocus
               onChange={(e) => setInput(e.target.value)}
-            ></input>
+            />
             <div className="flex flex-row h-10 gap-2 justify-between text mt-5">
               <button
-                className="flex items-center rounded-md bg-astra-100 justify-center w-full"
+                className="flex font-bold items-center rounded bg-astra-100 justify-center w-full hover:bg-astra-200"
                 onClick={handleInput}
               >
                 Enter
               </button>
               <button
-                className="flex rounded-md items-center bg-black-100 justify-center w-full"
+                className="flex rounded font-bold items-center bg-black-100 justify-center w-full"
                 onClick={handleModal}
               >
                 Cancel

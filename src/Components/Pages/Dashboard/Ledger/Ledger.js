@@ -1,9 +1,9 @@
 import React from "react";
 import Char from "./Char";
 
-import ledger_items from "../../../../assets/jsondata/ledger_items.json";
 import LedgerItems from "./LedgerItems";
 import { GlobalProvider } from "../../../Context/GlobalState";
+import { Balance } from "./Balance";
 
 export default function Ledger(props) {
   return (
@@ -14,13 +14,7 @@ export default function Ledger(props) {
             <Char />
           </div>
           <div className="bg-black-200 rounded-xl shadow-md">a</div>
-          {ledger_items.map((item) => (
-            <LedgerItems
-              key={item}
-              title={item.display_name}
-              color={item.color}
-            />
-          ))}
+          <Balance />
         </div>
       </GlobalProvider>
     </>

@@ -15,6 +15,7 @@ module.exports = {
       },
       astra: {
         100: "#575FFE",
+        200: "#3F49FE",
       },
       money: {
         100: "#10b981",
