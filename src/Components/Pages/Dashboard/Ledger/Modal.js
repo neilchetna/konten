@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
+import { DateTime } from "luxon";
+
 import { GlobalContext } from "../../../Context/GlobalState";
 
 export default function Modal({ title, showModal, setShowModal }) {
@@ -19,6 +21,7 @@ export default function Modal({ title, showModal, setShowModal }) {
       id: Math.floor(Math.random() * 100000000),
       amount: +input,
       type: title,
+      time: DateTime.now(),
     };
 
     addTransaction(newTransaction);

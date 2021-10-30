@@ -1,6 +1,5 @@
-import React, { useState, useCallback, useEffect, useContext } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Modal from "./Modal";
-import { GlobalContext } from "../../../Context/GlobalState";
 
 export default function LedgerItems({ title, color, balance = 0 }) {
   const [showModal, setShowModal] = useState(false);

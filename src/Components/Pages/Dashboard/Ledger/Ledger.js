@@ -1,7 +1,6 @@
 import React from "react";
 import Char from "./Char";
 
-import LedgerItems from "./LedgerItems";
 import { GlobalProvider } from "../../../Context/GlobalState";
 import { Balance } from "./Balance";
 

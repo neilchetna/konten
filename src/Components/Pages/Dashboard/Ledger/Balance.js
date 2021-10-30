@@ -29,15 +29,19 @@ export function Balance() {
 
   const netProfit = addIncome - addExpense;
 
+  function formater(num) {
+    return (Math.round(num * 100) / 100).toFixed(2);
+  }
+
   function output(name) {
     switch (name) {
       case "Expense":
-        return addExpense;
+        return formater(addExpense);
         break;
       case "Income":
-        return addIncome;
+        return formater(addIncome);
       case "Net-profit":
-        return netProfit;
+        return formater(netProfit);
       default:
         break;
     }
