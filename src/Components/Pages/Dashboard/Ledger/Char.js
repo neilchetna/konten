@@ -32,22 +32,25 @@ export default function Char() {
         label: "Income",
         data: income.reverse().map((item) => item.amount),
         fill: false,
-        backgroundColor: "#575FFE",
+        backgroundColor: "rgba(87,95,254, 0.2)",
         borderColor: "#575FFE",
         tension: 0.2,
+        fill: true,
       },
-      // {
-      //   label: "Expense",
-      //   data: expense.reverse().map((item) => item.amount),
-      //   fill: false,
-      //   backgroundColor: "white",
-      //   borderColor: "white",
-      //   tension: 0.2,
-      // },
+      {
+        label: "Expense",
+        data: expense.reverse().map((item) => item.amount),
+        fill: false,
+        backgroundColor: "white",
+        borderColor: "white",
+        tension: 0.2,
+      },
     ],
   };
 
   const options = {
+    mode: "Index",
+    responsive: true,
     scales: {
       yAxes: [
         {
