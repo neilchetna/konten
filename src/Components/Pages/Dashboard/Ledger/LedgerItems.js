@@ -30,7 +30,7 @@ export default function LedgerItems({ title, color, balance = 0 }) {
       >
         <p className="inset-0">{title}</p>
         <p className={color}>
-          {"\u20B9"}
+          {"\u20b9"}
           {balance}
         </p>
       </button>

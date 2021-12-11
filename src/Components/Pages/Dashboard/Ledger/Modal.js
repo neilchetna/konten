@@ -33,7 +33,7 @@ export default function Modal({ title, showModal, setShowModal }) {
     <>
       {showModal && title !== "Net-profit" ? (
         <div
-          className="fixed z-50 flex justify-center items-center h-full w-full bg-black-100
+          className="fixed inset-0 z-50 flex justify-center items-center h-full w-full bg-black-100
       backdrop-filter backdrop-blur-sm blur-md bg-opacity-30"
         >
           <div className="bg-black-200 relative max-w-xl p-4 rounded-md flex flex-col gap-2 pt-10">
