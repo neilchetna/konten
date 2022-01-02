@@ -3,6 +3,7 @@ import Char from "./Char";
 
 import { GlobalProvider } from "../../../Context/GlobalState";
 import { Balance } from "./Balance";
+import Entry from "./Entry";
 
 export default function Ledger(props) {
   return (
@@ -12,7 +13,9 @@ export default function Ledger(props) {
           <div className="col-span-3">
             <Char />
           </div>
-          <div className="bg-black-200 rounded-xl shadow-md">a</div>
+          <div className="bg-black-200 rounded-xl shadow-md">
+            <Entry />
+          </div>
           <Balance />
         </div>
       </GlobalProvider>
