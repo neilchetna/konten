@@ -1,7 +1,10 @@
-import React from "react";
-import { Menu } from "@headlessui/react";
+import React, { useContext } from "react";
+import { Listbox } from "@headlessui/react";
+import { CurrencyContext } from "../../Context/CurrencyContext";
 
 function Settings() {
+  const { currency, switchCurrency } = useContext(CurrencyContext);
+
   const curr = [
     {
       name: "INR",
@@ -25,26 +28,37 @@ function Settings() {
     },
   ];
 
+  console.log(currency);
+
+  function handleCurrency(e) {
+    // e.preventDefault();
+    switchCurrency(e);
+  }
+
   return (
     <div className="">
       <div className="width-md flex justify-center flex-col items-center">
         <h2 className="text-2xl pb-4">Settings</h2>
-        <Menu
+        <Listbox
+          value={currency}
           as="div"
           className="bg-black-200 p-3 gap-10 flex justify-between rounded-md shadow-lg relative max-w-screen-md"
+          onChange={handleCurrency}
         >
           Currencies
-          <Menu.Button>PlaceHolder Ruppes</Menu.Button>
-          <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-black-200 rounded-md shadow-sm ring-1 ring-gray-100 mt-10 ring-opacity-5  focus:outline-noneu">
+          <Listbox.Button>
+            {currency.name} {currency.uni}
+          </Listbox.Button>
+          <Listbox.Options className="absolute right-0 w-56 mt-2 origin-top-right bg-black-200 rounded-md shadow-sm ring-1 ring-gray-100 mt-10 ring-opacity-5  focus:outline-none">
             {curr.map((cur, index) => (
-              <Menu.Item key={index}>
-                <button className="p-3 px-1 w-full hover:bg-sky-50 hover:text-sky-700 rounded-lg font-bold border-b-1 border-gray-100">
-                  {[cur.name, cur.uni].join(" ")}
+              <Listbox.Option key={index} value={cur}>
+                <button className="hover:bg-astra-100 bg-opacity-10 p-3 px-1 w-full hover:bg-sky-50 hover:text-sky-700 rounded-lg font-bold border-b-1 border-gray-100">
+                  {cur.name} {cur.uni}
                 </button>
-              </Menu.Item>
+              </Listbox.Option>
             ))}
-          </Menu.Items>
-        </Menu>
+          </Listbox.Options>
+        </Listbox>
       </div>
     </div>
   );

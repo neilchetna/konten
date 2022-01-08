@@ -37,7 +37,6 @@ export function Balance() {
     switch (name) {
       case "Expense":
         return formater(addExpense);
-        break;
       case "Income":
         return formater(addIncome);
       case "Net-profit":

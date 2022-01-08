@@ -1,8 +1,10 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useContext, useState, useCallback, useEffect } from "react";
 import Modal from "./Modal";
+import { CurrencyContext } from "../../../Context/CurrencyContext";
 
 export default function LedgerItems({ title, color, balance = 0 }) {
   const [showModal, setShowModal] = useState(false);
+  const { currency } = useContext(CurrencyContext);
 
   function handleModal() {
     setShowModal((prev) => !prev);
@@ -30,7 +32,7 @@ export default function LedgerItems({ title, color, balance = 0 }) {
       >
         <p className="inset-0">{title}</p>
         <p className={color}>
-          {"\u20b9"}
+          {currency.uni}
           {balance}
         </p>
       </button>

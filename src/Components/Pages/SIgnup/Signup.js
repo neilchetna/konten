@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Signup() {
   return (
-    <div className="w-screen h-screen text-white-100 bg-black-100 flex justify-center items-center flex-col">
+    <div className="w-screen h-screen text-white-100 bg-black-100 flex justify-center items-center flex-col z-50">
       <h3 className="mb-3 text-3xl font-bold">Sign In</h3>
       <div className="w-full max-w-xs">
         <form className="bg-black-200 shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -19,7 +19,7 @@ export default function Signup() {
           </div>
           <div className="mb-6">
             <label
-              className="block text-gray-700 text-sm font-bold mb-2"
+              className="block text-white-200 text-sm font-bold mb-2"
               for="password"
             >
               Password
@@ -41,13 +41,13 @@ export default function Signup() {
             >
               Sign In
             </button>
-            <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800">
+            <a className="inline-block align-baseline font-bold text-sm text-astra-100 hover:text-blue-800">
               Forgot Password?
             </a>
           </div>
         </form>
         <p className="text-center text-gray-500 text-xs">
-          &copy;2020 Acme Corp. All rights reserved.
+          Konten: Making Business Easy
         </p>
       </div>
     </div>
