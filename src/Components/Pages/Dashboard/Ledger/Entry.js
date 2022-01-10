@@ -11,8 +11,12 @@ export default function Entry() {
     <div className="p-4">
       <p className="text-xl font-medium pb-1">Ledger Entry</p>
       <div className="overflow-scroll scroll-box">
-        {transactions.map((transaction) => (
-          <EntryList transaction={transaction} unicode={currency.uni} />
+        {transactions.map((transaction, index) => (
+          <EntryList
+            key={index}
+            transaction={transaction}
+            unicode={currency.uni}
+          />
         ))}
       </div>
     </div>

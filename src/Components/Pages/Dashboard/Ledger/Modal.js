@@ -1,6 +1,7 @@
+import axios from "axios";
 import React, { useState, useContext } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
-import { DateTime } from "luxon";
+// import { DateTime } from "luxon";
 
 import { GlobalContext } from "../../../Context/GlobalState";
 
@@ -14,14 +15,14 @@ export default function Modal({ title, showModal, setShowModal }) {
     setShowModal((prev) => !prev);
   }
 
-  function handleInput(e) {
+  async function handleInput(e) {
     e.preventDefault();
 
     const newTransaction = {
-      id: Math.floor(Math.random() * 100000000),
+      // id: Math.floor(Math.random() * 100000000),
       amount: +input,
       type: title,
-      time: DateTime.now(),
+      // time: DateTime.now(),
     };
 
     addTransaction(newTransaction);

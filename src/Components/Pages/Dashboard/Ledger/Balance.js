@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { GlobalContext } from "../../../Context/GlobalState";
 
 import ledger_items from "../../../../assets/jsondata/ledger_items.json";
 import LedgerItems from "./LedgerItems";
 
 export function Balance() {
-  const { transactions } = useContext(GlobalContext);
+  const { transactions, getTransactions } = useContext(GlobalContext);
+
+  useEffect(() => {
+    getTransactions();
+  }, []);
 
   const income = transactions.map(function (transaction) {
     if (transaction.type === "Income") {
