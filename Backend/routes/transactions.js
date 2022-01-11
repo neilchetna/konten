@@ -7,7 +7,7 @@ const Transaction = require("../models/Transaction");
 
 router.get("/", async function (req, res, next) {
   try {
-    const transactions = await Transaction.find();
+    const transactions = await Transaction.find().sort({ time: -1 });
 
     return res.status(200).json({
       success: true,

@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useContext } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 // import { DateTime } from "luxon";
@@ -20,7 +19,7 @@ export default function Modal({ title, showModal, setShowModal }) {
 
     const newTransaction = {
       // id: Math.floor(Math.random() * 100000000),
-      amount: +input,
+      amount: Math.abs(input),
       type: title,
       // time: DateTime.now(),
     };

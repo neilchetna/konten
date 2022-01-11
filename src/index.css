@@ -24,3 +24,6 @@ input[type="number"] {
 .scroll-box::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.2);
 }
+.entry {
+  max-height: 565px;
+}

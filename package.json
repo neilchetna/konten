@@ -22,7 +22,9 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "backend": "cd backend && npm start",
+    "eject": "react-scripts eject",
+    "dev": "concurrently -n \"server,client\" -c \"blue,green\" \"npm start\" \"npm run backend\""
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +46,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.7",
+    "concurrently": "^7.0.0",
     "postcss": "^7.0.38",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.16"
   },

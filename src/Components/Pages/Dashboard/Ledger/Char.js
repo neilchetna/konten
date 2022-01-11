@@ -20,7 +20,7 @@ export default function Char() {
   });
 
   const date = transactions.map((time) =>
-    time.time.toLocaleString(DateTime.DATE_MED)
+    DateTime.fromISO(time.time).toLocaleString(DateTime.DATE_MED)
   );
 
   console.log();
@@ -31,7 +31,6 @@ export default function Char() {
       {
         label: "Income",
         data: income.reverse().map((item) => item.amount),
-        fill: false,
         backgroundColor: "rgba(87,95,254, 0.2)",
         borderColor: "#575FFE",
         tension: 0.2,
@@ -52,13 +51,21 @@ export default function Char() {
     mode: "Index",
     responsive: true,
     scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-          },
+      yAxes: {
+        ticks: {
+          beginAtZero: true,
         },
-      ],
+        grid: {
+          drawBorder: false,
+          color: "rgba(255, 255, 255, 5%)",
+        },
+      },
+      xAxes: {
+        grid: {
+          drawBorder: false,
+          color: "rgba(255, 255, 255, 5%)",
+        },
+      },
     },
   };
 
