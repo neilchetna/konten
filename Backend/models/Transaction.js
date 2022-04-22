@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const model = mongoose.model;
 
-const TransactionSchema = new mongoose.Schema({
+const TransactionSchema = new Schema({
   amount: {
     type: Number,
     required: [true, "Please add an amount"],
@@ -16,4 +18,4 @@ const TransactionSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Transaction", TransactionSchema);
+module.exports = model("Transaction", TransactionSchema);

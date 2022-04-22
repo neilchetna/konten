@@ -2,8 +2,10 @@ const express = require("express");
 const router = express.Router();
 const Transaction = require("../models/Transaction");
 
-// @desc get transactions
-// @route "/transaction"
+/**
+ * @desc get transactions
+ * @route "/transaction"
+ */
 
 router.get("/", async function (req, res, next) {
   try {
@@ -22,8 +24,10 @@ router.get("/", async function (req, res, next) {
   }
 });
 
-// @desc add transactions
-// @route "/transaction"
+/**
+ * @desc add transactions
+ * @route "/transaction"
+ */
 
 router.post("/", async function (req, res, next) {
   try {
@@ -42,8 +46,10 @@ router.post("/", async function (req, res, next) {
   }
 });
 
-// @desc delete transactions
-// @route "/transaction/:id"
+/**
+ * @desc delete transactions
+ * @route "/transaction/:id"
+ */
 
 router.delete("/:id", async function (req, res, next) {
   try {
