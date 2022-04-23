@@ -1,15 +1,12 @@
 import Layout from "./Components/Layout";
-import Signup from "./Components/Pages/SIgnup/Signup";
-import Signin from "./Components/Pages/SIgnup/Signin";
-import ForgotPassword from "./Components/Pages/SIgnup/ForgotPassword";
+import UserProvider from "./Components/Context/UserState";
 
 function App() {
   return (
     <>
-      {/* <ForgotPassword /> */}
-      {/* <Signin /> */}
-      {/* <Signup /> */}
-      <Layout />
+      <UserProvider>
+        <Layout />
+      </UserProvider>
     </>
   );
 }
