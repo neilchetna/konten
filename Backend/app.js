@@ -5,10 +5,10 @@ const logger = require("morgan");
 const connectDB = require("./config/db");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const passport = require("passport");
+const session = require("express-session");
 
 const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
-const transactionRouter = require("./routes/transactions");
 
 const app = express();
 dotenv.config({ path: "./config/config.env" });
@@ -21,8 +21,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors({ origin: "*" }));
 
+app.use(
+  session({
+    secret: "this is secret",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/transaction", transactionRouter);
 
 module.exports = app;

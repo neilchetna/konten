@@ -4,6 +4,8 @@ import Sidebar from "./Sidebar";
 import Routes from "./Routes";
 import Signup from "./Pages/SIgnup/Signup";
 import CurrencyProvider from "./Context/CurrencyContext";
+import ForgotPassword from "./Pages/SIgnup/ForgotPassword";
+import Signin from "./Pages/SIgnup/Signin";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -11,6 +13,9 @@ function Layout() {
   const auth = true;
   return (
     <BrowserRouter>
+      {/* <ForgotPassword />
+      <Signin />
+      <Signup /> */}
       {auth ? (
         <Route
           render={(props) => (
@@ -35,7 +40,9 @@ function Layout() {
         />
       ) : (
         <Switch>
-          <Route path="/" exact component={Signup} />
+          <Route path="/signup" exact component={Signup} />
+          <Route path="/signin" exact component={Signin} />
+          <Route path="/forgot-password" exact component={ForgotPassword} />
         </Switch>
       )}
     </BrowserRouter>

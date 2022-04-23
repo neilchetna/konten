@@ -19,7 +19,7 @@ router.get("/", async function (req, res, next) {
   } catch (err) {
     return res.status(500).json({
       success: false,
-      error: "neil you messed up",
+      error: err,
     });
   }
 });
@@ -31,7 +31,7 @@ router.get("/", async function (req, res, next) {
 
 router.post("/", async function (req, res, next) {
   try {
-    // const { type, amount } = req.body;
+    // const { type, amount } = req.body
     const transaction = await Transaction.create(req.body);
 
     return res.status(201).json({
@@ -41,7 +41,7 @@ router.post("/", async function (req, res, next) {
   } catch (err) {
     return res.status(500).json({
       success: false,
-      error: "neil you messed up",
+      error: err,
     });
   }
 });
