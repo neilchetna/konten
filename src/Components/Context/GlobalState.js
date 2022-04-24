@@ -43,7 +43,7 @@ export const GlobalProvider = ({ children }) => {
 
   async function deleteTransaction(id) {
     try {
-      await callBackendApi({ method: "delete", url: `/transaction${id}` });
+      await callBackendApi({ method: "delete", url: `/transaction/${id}` });
       dispatch({
         type: actions.deleteTransaction,
         payload: id,

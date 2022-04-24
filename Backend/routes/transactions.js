@@ -59,7 +59,6 @@ router.post("/", async function (req, res, next) {
 router.delete("/:id", async function (req, res, next) {
   try {
     const transaction = await Transaction.findById(req.params.id);
-
     if (!transaction) {
       return res.status(404).json({
         success: false,
