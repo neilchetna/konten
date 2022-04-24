@@ -19,11 +19,10 @@ module.exports.register = async (req, res) => {
       email,
       password: hashedPassword,
     };
-    let newUser = userModel.create(userData);
+    let newUser = await userModel.create(userData);
     const userToken = await generateUserToken(newUser);
     return res.status(200).json({ success: true, data: { userToken } });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ success: false, data: error });
   }
 };

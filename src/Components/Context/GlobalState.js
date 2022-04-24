@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
-import axios from "axios";
+import { callBackendApi } from "../utils/common";
 
 // Initial state
 const initialState = {
@@ -28,7 +28,7 @@ export const GlobalProvider = ({ children }) => {
 
   async function getTransactions() {
     try {
-      const res = await axios.get(`${api}/transaction`);
+      const res = await callBackendApi({ method: "get", url: "/transaction" });
       dispatch({
         type: actions.getTransactions,
         payload: res.data.data,
@@ -43,7 +43,7 @@ export const GlobalProvider = ({ children }) => {
 
   async function deleteTransaction(id) {
     try {
-      await axios.delete(`${api}/transaction/${id}`);
+      await callBackendApi({ method: "delete", url: `/transaction${id}` });
       dispatch({
         type: actions.deleteTransaction,
         payload: id,
@@ -57,14 +57,12 @@ export const GlobalProvider = ({ children }) => {
   }
 
   async function addTransaction(transaction) {
-    const config = {
-      header: {
-        "Content-type": "application/json",
-      },
-    };
-
     try {
-      const res = await axios.post(`${api}/transaction`, transaction, config);
+      const res = await callBackendApi({
+        method: "post",
+        url: "/transaction",
+        data: transaction,
+      });
       dispatch({
         type: actions.addTransaction,
         payload: res.data.data,

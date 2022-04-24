@@ -33,7 +33,6 @@ module.exports.generateUserToken = async function generateJwtToken(user) {
       { fullName, email, createdAt },
       process.env.JWT_SECRET
     );
-
     return userToken;
   } else {
     throw new Error("User not found");

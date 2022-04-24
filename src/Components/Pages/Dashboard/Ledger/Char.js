@@ -23,8 +23,6 @@ export default function Char() {
     DateTime.fromISO(time.time).toLocaleString(DateTime.DATE_MED)
   );
 
-  console.log();
-
   const data = {
     labels: date,
     datasets: [

@@ -11,13 +11,10 @@ import { UserContext } from "./Context/UserState";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function Layout() {
-  const { loggedIn } = useContext(UserContext);
-  const auth = loggedIn;
+  const { loggedInUser } = useContext(UserContext);
+  const auth = loggedInUser;
   return (
     <BrowserRouter>
-      {/* <ForgotPassword />
-      <Signin />
-      <Signup /> */}
       {auth ? (
         <Route
           render={(props) => (
@@ -42,8 +39,8 @@ function Layout() {
         />
       ) : (
         <Switch>
-          <Route path="/signin" exact component={Signup} />
-          <Route path="/signup" exact component={Signin} />
+          <Route path="/signup" exact component={Signup} />
+          <Route path="/signin" exact component={Signin} />
           <Route path="/forgot-password" exact component={ForgotPassword} />
         </Switch>
       )}

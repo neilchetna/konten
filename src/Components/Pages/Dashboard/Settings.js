@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
 import { Listbox } from "@headlessui/react";
 import { CurrencyContext } from "../../Context/CurrencyContext";
+import { UserContext } from "../../Context/UserState";
+import { useHistory } from "react-router-dom";
 
 function Settings() {
   const { currency, switchCurrency } = useContext(CurrencyContext);
+  const { userLogout } = useContext(UserContext);
+  const history = useHistory();
 
   const curr = [
     {
@@ -28,11 +32,13 @@ function Settings() {
     },
   ];
 
-  console.log(currency);
-
   function handleCurrency(e) {
-    // e.preventDefault();
     switchCurrency(e);
+  }
+
+  function handleLogout() {
+    userLogout();
+    history.push("/signin");
   }
 
   return (
@@ -59,6 +65,12 @@ function Settings() {
             ))}
           </Listbox.Options>
         </Listbox>
+        <button
+          onClick={handleLogout}
+          className="p-3 m-2 bg-red-400 rounded-md bg-opacity-10 text-red-400"
+        >
+          Logout
+        </button>
       </div>
     </div>
   );

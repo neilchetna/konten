@@ -4,7 +4,6 @@ import { actions } from "./GlobalState";
 export default (state, action) => {
   switch (action.type) {
     case actions.getTransactions:
-      console.log(action.payload);
       return {
         ...state,
         loading: false,

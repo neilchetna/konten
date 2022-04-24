@@ -1,63 +1,37 @@
 import React, { useState, useContext } from "react";
-import { callBackendApi } from "../../utils/common";
+import { Link } from "react-router-dom";
 import { BiErrorCircle } from "react-icons/bi";
-import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../../Context/UserState";
+import { useHistory } from "react-router-dom";
 
-export default function Signin() {
+export default function Signup() {
   const history = useHistory();
-  const { setLoggedIn } = useContext(UserContext);
-  const [fullName, setFullName] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const [err, setErr] = useState(null);
+  const { userSingIn, authError, setAuthError, checkUserToken, loggedInUser } =
+    useContext(UserContext);
 
-  const handleSignUp = async (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
-    try {
-      const body = {
-        email,
-        password,
-        fullName,
-      };
-      const userRes = await callBackendApi({
-        method: "post",
-        url: "/auth/register",
-        data: body,
-      });
-      setLoggedIn(true);
+    const data = {
+      email,
+      password,
+    };
+    await userSingIn(data);
+    checkUserToken();
+    if (loggedInUser) {
       history.push("/ledger");
-    } catch (error) {
-      console.log(error.response);
-      if (error.response) {
-        setErr(error.response.data.error.message);
-      }
     }
   };
 
   return (
     <div className="w-screen h-screen text-white-100 bg-black-100 flex justify-center items-center flex-col z-50">
-      <h3 className="mb-3 text-3xl font-bold">Sign up</h3>
+      <h3 className="mb-3 text-3xl font-bold">Sign In</h3>
       <div className="w-full max-w-xs">
         <form
-          onSubmit={handleSignUp}
+          onSubmit={handleSignIn}
           className="bg-black-200 shadow-md rounded px-8 pt-6 pb-8 mb-4"
         >
-          <div className="mb-4">
-            <label className="block text-sm font-bold mb-2" for="Name">
-              Name
-            </label>
-            <input
-              className="shadow bg-black-100 appearance-none rounded w-full py-2 px-3 text-white-100 leading-tight focus:outline-none focus:ring-2 focus:ring-astra-100"
-              id="Name"
-              type="text"
-              onChange={(e) => {
-                setFullName(e.target.value);
-                setErr(null);
-              }}
-              placeholder="Name"
-            />
-          </div>
           <div className="mb-4">
             <label className="block text-sm font-bold mb-2" for="Email">
               Email
@@ -65,10 +39,10 @@ export default function Signin() {
             <input
               className="shadow bg-black-100 appearance-none rounded w-full py-2 px-3 text-white-100 leading-tight focus:outline-none focus:ring-2 focus:ring-astra-100"
               id="Email"
-              type="email"
+              type="text"
               onChange={(e) => {
                 setEmail(e.target.value);
-                setErr(null);
+                setAuthError(null);
               }}
               placeholder="Email"
             />
@@ -86,7 +60,7 @@ export default function Signin() {
               type="password"
               onChange={(e) => {
                 setPassword(e.target.value);
-                setErr(null);
+                setAuthError(null);
               }}
               placeholder="Password"
             />
@@ -96,24 +70,30 @@ export default function Signin() {
               className="bg-astra-100 hover:bg-astra-200 text-white font-bold py-2 px-4 rounded focus:ring-2 focus:ring-astra-100 focus:ring-opacity-70"
               type="submit"
             >
-              Sign up
+              Sign In
             </button>
+            <Link
+              to="/forgot-password"
+              className="inline-block align-baseline font-bold text-sm text-astra-100 hover:text-blue-800"
+            >
+              Forgot Password?
+            </Link>
           </div>
-          {err && (
+          {authError && (
             <div className="my-3 gap-2 flex flex-row justify-center items-center p-4 bg-red-400 rounded-md bg-opacity-10 text-red-400">
               <span>
                 <BiErrorCircle />
               </span>
-              {err}
+              {authError}
             </div>
           )}
           <div className="m-3">
-            Dont have and account?{" "}
+            Dont have an account?{" "}
             <Link
-              to="/signin"
+              to="/signup"
               className="font-bold text-sm text-astra-100 hover:text-blue-800"
             >
-              Singin
+              Singup
             </Link>
           </div>
         </form>

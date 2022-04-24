@@ -9,7 +9,10 @@ const Transaction = require("../models/Transaction");
 
 router.get("/", async function (req, res, next) {
   try {
-    const transactions = await Transaction.find().sort({ time: -1 });
+    const { user } = req;
+    const transactions = await Transaction.find({ user: user._id }).sort({
+      time: -1,
+    });
 
     return res.status(200).json({
       success: true,
@@ -31,8 +34,10 @@ router.get("/", async function (req, res, next) {
 
 router.post("/", async function (req, res, next) {
   try {
-    // const { type, amount } = req.body
-    const transaction = await Transaction.create(req.body);
+    const data = req.body;
+    const { user } = req;
+    const transactionData = { ...data, user };
+    const transaction = await Transaction.create(transactionData);
 
     return res.status(201).json({
       success: true,
