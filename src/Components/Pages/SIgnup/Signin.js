@@ -19,9 +19,6 @@ export default function Signup() {
     };
     await userSingIn(data);
     checkUserToken();
-    if (loggedInUser) {
-      history.push("/ledger");
-    }
   };
 
   return (

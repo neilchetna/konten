@@ -20,7 +20,6 @@ export default function Signin() {
     };
     await userSingUp(body);
     checkUserToken();
-    if (loggedInUser) history.push("/ledger");
   };
 
   return (

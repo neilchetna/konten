@@ -2,12 +2,14 @@ import React, { useState, createContext, useEffect } from "react";
 import { callBackendApi } from "../utils/common";
 import Cookies from "js-cookie";
 import jwt from "jsonwebtoken";
+import { useHistory } from "react-router-dom";
 
 export const UserContext = createContext();
 
 export default function UserProvider({ children }) {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [authError, setAuthError] = useState(null);
+  const history = useHistory();
 
   function checkUserToken() {
     const userToken = Cookies.get("userToken");
@@ -16,6 +18,8 @@ export default function UserProvider({ children }) {
   }
 
   useEffect(() => {
+    console.log(process.env.PUBLIC_URL);
+    setAuthError(null);
     checkUserToken();
   }, []);
 
@@ -29,6 +33,8 @@ export default function UserProvider({ children }) {
 
       const { userToken } = userRes.data.data;
       Cookies.set("userToken", userToken);
+      checkUserToken();
+      history.push("/ledger");
     } catch (error) {
       if (error.response) {
         setAuthError(error.response.data.error.message);
@@ -45,6 +51,8 @@ export default function UserProvider({ children }) {
       });
       const { userToken } = userRes.data.data;
       Cookies.set("userToken", userToken);
+      checkUserToken();
+      history.push("/ledger");
     } catch (error) {
       if (error.response) {
         error.response.status = 401
