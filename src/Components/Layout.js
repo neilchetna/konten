@@ -9,6 +9,7 @@ import Signin from "./Pages/SIgnup/Signin";
 import { UserContext } from "./Context/UserState";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import LandingPage from "./Pages/LandingPage/LandingPage";
 
 function Layout() {
   const { loggedInUser } = useContext(UserContext);
@@ -42,6 +43,7 @@ function Layout() {
           <Route path="/signup" exact component={Signup} />
           <Route path="/signin" exact component={Signin} />
           <Route path="/forgot-password" exact component={ForgotPassword} />
+          <Route path="/" exact component={LandingPage} />
         </Switch>
       )}
     </BrowserRouter>

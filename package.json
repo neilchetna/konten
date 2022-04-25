@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.24.0",
     "chart.js": "^3.5.1",
+    "concurrently": "^7.1.0",
     "js-cookie": "^3.0.1",
     "jsonwebtoken": "^8.5.1",
     "luxon": "^2.0.2",
@@ -49,7 +50,6 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.8.7",
-    "concurrently": "^7.0.0",
     "postcss": "^7.0.38",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.16"
   },
