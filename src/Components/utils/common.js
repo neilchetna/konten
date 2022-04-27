@@ -11,7 +11,7 @@ export const callBackendApi = async ({ method, data, params, query, url }) => {
     headers: {
       Authorization: userToken || null,
     },
-    url: `http://localhost:5000${url}`,
+    url: `https://immense-wave-22705.herokuapp.com${url}`,
   });
   return res;
 };
