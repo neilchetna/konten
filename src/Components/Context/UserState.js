@@ -9,6 +9,7 @@ export const UserContext = createContext();
 export default function UserProvider({ children }) {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [authError, setAuthError] = useState(null);
+  const [reqLoading, setReqLoading] = useState(false);
   const history = useHistory();
 
   function checkUserToken() {
@@ -24,6 +25,7 @@ export default function UserProvider({ children }) {
   }, []);
 
   async function userSingUp(userData) {
+    setReqLoading(true);
     try {
       const userRes = await callBackendApi({
         method: "post",
@@ -40,9 +42,11 @@ export default function UserProvider({ children }) {
         setAuthError(error.response.data.error.message);
       }
     }
+    setReqLoading(false);
   }
 
   async function userSingIn(userData) {
+    setReqLoading(true);
     try {
       const userRes = await callBackendApi({
         method: "post",
@@ -60,11 +64,14 @@ export default function UserProvider({ children }) {
           : setAuthError(error.response.data.data);
       }
     }
+    setReqLoading(false);
   }
 
   function userLogout() {
+    setReqLoading(true);
     Cookies.remove("userToken");
     checkUserToken();
+    setReqLoading(false);
   }
   return (
     <UserContext.Provider
@@ -77,6 +84,7 @@ export default function UserProvider({ children }) {
         userSingIn,
         checkUserToken,
         userLogout,
+        reqLoading,
       }}
     >
       {children}

@@ -2,10 +2,11 @@ import React, { useState, useContext } from "react";
 import { BiErrorCircle } from "react-icons/bi";
 import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../../Context/UserState";
+import Spinner from "./Spinner";
 
 export default function Signin() {
   const history = useHistory();
-  const { userSingUp, authError, setAuthError, checkUserToken, loggedInUser } =
+  const { userSingUp, authError, setAuthError, checkUserToken, reqLoading } =
     useContext(UserContext);
   const [fullName, setFullName] = useState(null);
   const [email, setEmail] = useState(null);
@@ -38,6 +39,7 @@ export default function Signin() {
               className="shadow bg-black-100 appearance-none rounded w-full py-2 px-3 text-white-100 leading-tight focus:outline-none focus:ring-2 focus:ring-astra-100"
               id="Name"
               type="text"
+              required={true}
               onChange={(e) => {
                 setFullName(e.target.value);
                 setAuthError(null);
@@ -53,6 +55,7 @@ export default function Signin() {
               className="shadow bg-black-100 appearance-none rounded w-full py-2 px-3 text-white-100 leading-tight focus:outline-none focus:ring-2 focus:ring-astra-100"
               id="Email"
               type="email"
+              required={true}
               onChange={(e) => {
                 setEmail(e.target.value);
                 setAuthError(null);
@@ -70,6 +73,7 @@ export default function Signin() {
             <input
               className="shadow bg-black-100 appearance-none rounded w-full py-2 px-3 text-white-100 leading-tight focus:outline-none focus:ring-2 focus:ring-astra-100"
               id="password"
+              required={true}
               type="password"
               onChange={(e) => {
                 setPassword(e.target.value);
@@ -80,10 +84,10 @@ export default function Signin() {
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-astra-100 hover:bg-astra-200 text-white font-bold py-2 px-4 rounded focus:ring-2 focus:ring-astra-100 focus:ring-opacity-70"
+              className="flex w-20 row justify-center items-center gap-2 bg-astra-100 hover:bg-astra-200 text-white font-bold py-2 px-2 rounded focus:ring-2 focus:ring-astra-100 focus:ring-opacity-70"
               type="submit"
             >
-              Sign up
+              {reqLoading ? <Spinner /> : <span>Sign Up</span>}
             </button>
           </div>
           {authError && (
